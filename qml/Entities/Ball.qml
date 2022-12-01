@@ -7,8 +7,13 @@ EntityBase {
     width: circleImage.width
     height: circleImage.height
 
-    entityId: "circle"
+    id: ball
     entityType: "circle"
+
+    x: 100
+    Component.onCompleted: {
+        var mapped = mapToItem(world.debugDraw, x, y)
+    }
 
     Image {
         id: circleImage
@@ -17,15 +22,36 @@ EntityBase {
         height: width
     }
 
+
+
     CircleCollider {
         id: circleCollider
 
+
+        density: 10
+        friction: 0
+        restitution: 0.98
+
         // the CircleCollider will not be affected by gravity or other applied physics forces
-        collisionTestingOnlyMode: true
+        collisionTestingOnlyMode: false
 
         // approximate the collider with the image size - if the image is circular, this is a good approximation
         radius: circleImage.width/2
+        linearVelocity: Qt.point(Math.random()*120-60, 450)
 
+        fixture.onBeginContact: {
+            var fixture = other;
+            var body = other.getBody();
+            var otherEntity = body.target
+
+            // get the entityType of the colliding entity
+            var collidingType = otherEntity.entityType
+            if(collidingType === "goal") {
+                ball.removeEntity()
+                return
+            }
+
+        }
     }
 
 }

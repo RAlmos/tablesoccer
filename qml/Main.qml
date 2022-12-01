@@ -17,7 +17,7 @@ GameWindow {
     // the content of the logical scene size (480x320 for landscape mode by default) gets scaled to the window size based on the scaleMode
     // you can set this size to any resolution you would like your project to start with, most of the times the one of your main target device
     // this resolution is for iPhone 4 & iPhone 4S
-    screenWidth: 700
+    screenWidth: 760
     screenHeight: 320
 
 
@@ -38,10 +38,13 @@ GameWindow {
         Table {
             id: table
         }
+        // use a physics world because we need collision detection
+        PhysicsWorld {
+            id: world
+            updatesPerSecondForPhysics: 60
+        }
 
     }
-
-
 
     JoystickControllerHUD {
         id: joystickP1L

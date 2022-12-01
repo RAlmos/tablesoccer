@@ -18,48 +18,62 @@ Item {
 
     }
 
+
+
     Ball {
         id: ball
     }
+    Dummy {
+        x: 100; y:200
+
+    }
+
     Wall {
         id: border_bottom
-
-        height: 2
+        width: parent.width
         anchors {
-            left: parent.left
-            right: parent.right
             bottom: parent.bottom
         }
     }
-
     Wall {
         id: border_top
-
-        height: 2
+        width: parent.width
         anchors {
             top: parent.top
-            left: parent.left
-            right: parent.right
         }
     }
-
     Wall {
         id: border_left
-        width: 2
+        height: parent.height
         anchors {
-            top: parent.top
-            bottom: parent.bottom
             left: parent.left
         }
     }
-
     Wall {
         id: border_right
-        width: 2
+        height: parent.height
         anchors {
-            top: parent.top
-            bottom: parent.bottom
             right: parent.right
         }
+    }
+    Wall {
+        id: goal_left
+        height: parent.height/4
+        y: 3*parent.height/8
+        width: 2
+        anchors {
+            left: parent.left
+        }
+        entityType: "goal"
+    }
+    Wall {
+        id: goal_right
+        height: parent.height/4
+        y: 3*parent.height/8
+        width: 2
+        anchors {
+            right: parent.right
+        }
+        entityType: "goal"
     }
 }

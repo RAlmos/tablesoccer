@@ -4,6 +4,8 @@ import Felgo 3.0
 EntityBase {
     id: entity
     entityType: "wall"
+    width: 1
+    height: 1
 
     BoxCollider {
         id: boxCollider

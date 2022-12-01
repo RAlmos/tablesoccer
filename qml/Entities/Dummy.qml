@@ -4,12 +4,21 @@ import Felgo 3.0
 EntityBase {
 
     entityId: "entity"
-    entityType: "customEntity"
+    entityType: "dummy"
 
     Rectangle {
-        width: 50
-        height: 50
+        id: rectangle
+        width: 10
+        height: 20
         color: "red"
+    }
+
+    BoxCollider {
+        id: boxCollider
+
+        width: 10
+        height: 20
+        bodyType: Body.Static
     }
 
 }

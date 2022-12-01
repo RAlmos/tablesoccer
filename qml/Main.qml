@@ -20,6 +20,7 @@ GameWindow {
     screenWidth: 960
     screenHeight: 640
 
+
     Scene {
         id: scene
 
@@ -67,35 +68,44 @@ GameWindow {
             }
         }// Rectangle with size of logical scene
 
-        Image {
-            id: felgoLogo
-            source: "../assets/felgo-logo.png"
 
-            // 50px is the "logical size" of the image, based on the scene size 480x320
-            // on hd or hd2 displays, it will be shown at 100px (hd) or 200px (hd2)
-            // thus this image should be at least 200px big to look crisp on all resolutions
-            // for more details, see here: https://felgo.com/doc/felgo-different-screen-sizes/
-            width: 50
-            height: 50
 
-            // this positions it absolute right and top of the GameWindow
-            // change resolutions with Ctrl (or Cmd on Mac) + the number keys 1-8 to see the effect
-            anchors.right: scene.gameWindowAnchorItem.right
-            anchors.top: scene.gameWindowAnchorItem.top
+    }
 
-            // this animation sequence fades the Felgo logo in and out infinitely (by modifying its opacity property)
-            SequentialAnimation on opacity {
-                loops: Animation.Infinite
-                PropertyAnimation {
-                    to: 0
-                    duration: 1000 // 1 second for fade out
-                }
-                PropertyAnimation {
-                    to: 1
-                    duration: 1000 // 1 second for fade in
-                }
-            }
-        }
+    JoystickControllerHUD {
+        id: joystickP1L
 
+        anchors.top: parent.top
+        width: 100; height: 100
+
+        thumbSource: "../assets/joystick_thumb.png"
+    }
+
+    JoystickControllerHUD {
+        id: joystickP2L
+
+        anchors.bottom: parent.bottom
+        width: 100; height: 100
+
+        thumbSource: "../assets/joystick_thumb.png"
+    }
+    JoystickControllerHUD {
+        id: joystickP1R
+
+        anchors.top: parent.top
+        anchors.right: parent.right
+        width: 100; height: 100
+
+        thumbSource: "../assets/joystick_thumb.png"
+    }
+
+    JoystickControllerHUD {
+        id: joystickP2R
+
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        width: 100; height: 100
+
+        thumbSource: "../assets/joystick_thumb.png"
     }
 }

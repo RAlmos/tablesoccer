@@ -60,4 +60,7 @@ macx {
 }
 
 DISTFILES += \
-    qml/JoyStick.qml
+    qml/Entities/Ball.qml \
+    qml/Entities/Dummy.qml \
+    qml/Entities/Wall.qml \
+    qml/Table.qml

@@ -2,8 +2,7 @@ import QtQuick 2.0
 import Felgo 3.0
 
 EntityBase {
-
-    entityId: "entity"
+    id: dummy
     entityType: "dummy"
 
     Rectangle {
@@ -11,6 +10,13 @@ EntityBase {
         width: 10
         height: 20
         color: "red"
+    }
+    TwoAxisController {
+        id: twoAxisController
+
+        // whenever the thumb position changes, update the twoAxisController
+        xAxis: joystickP1L.controllerXPosition
+        yAxis: joystickP1L.controllerYPosition
     }
 
     BoxCollider {

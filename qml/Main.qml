@@ -37,6 +37,8 @@ GameWindow {
 
         Table {
             id: table
+
+            Keys.forwardTo: [level.player_red.controller, level.player_blue.controller]
         }
         // use a physics world because we need collision detection
         PhysicsWorld {
@@ -53,6 +55,10 @@ GameWindow {
         thumbRadius: 0.25*width
         x: 50; y: 50
         thumbSource: "../assets/joystick_thumb.png"
+
+        property variant playerTwoxisController: table.player_red.getComponent("TwoAxisController")
+        onControllerXPositionChanged: playerTwoxisController.xAxis = controllerXPosition;
+        onControllerYPositionChanged: playerTwoxisController.yAxis = controllerYPosition;
     }
 
     JoystickControllerHUD {

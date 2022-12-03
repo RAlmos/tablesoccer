@@ -23,9 +23,29 @@ Item {
     Ball {
         id: ball
     }
-    Dummy {
-        x: 100; y:200
 
+
+    Item {
+        id: player1
+
+        Item {
+            id: player1_1
+            height: table.height*0.60
+            y: table.height*0.125+10
+            x: table.width*3/9
+            Dummy {}
+            Dummy {
+                y: parent.height/2
+            }
+            Dummy {
+                y: parent.height
+            }
+        }
+    }
+
+    Dummy {
+        id: akarki
+        x: 100; y:200
     }
 
     Wall {
